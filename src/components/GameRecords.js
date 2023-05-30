@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { GetGames } from '../api/GameAPI'
+import Button from '@mui/material/Button'
 
 const GameRecords = () => {
   const [gameRecords, setGameRecords] = useState([])
@@ -8,6 +9,11 @@ const GameRecords = () => {
     const gameRecords = await GetGames()
 
     setGameRecords(gameRecords)
+  }
+
+  const handleDelete = recordId => {
+    // console.log('...')
+    console.log('delete record: ', recordId)
   }
 
   useEffect(() => {
@@ -21,6 +27,12 @@ const GameRecords = () => {
           console.log(record)
           return (
             <li key={record.id}>
+              <Button
+                varient="contained"
+                onClick={() => handleDelete(record.id)}
+              >
+                Delete
+              </Button>
               <p>{record.id}</p>
               <p>
                 Game {record.game} ({record.month}/{record.day}/{record.year}),{' '}
