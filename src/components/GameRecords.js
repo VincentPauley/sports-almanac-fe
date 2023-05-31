@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 import { GetGames } from '../api/GameAPI'
+
+// import DeleteGameRecord from '../api/calls/DeleteGameRecord'
+import { DeleteGameRecord } from '../api/calls'
+
 import Button from '@mui/material/Button'
 
 const GameRecords = () => {
@@ -12,8 +16,8 @@ const GameRecords = () => {
   }
 
   const handleDelete = recordId => {
-    // console.log('...')
-    console.log('delete record: ', recordId)
+    // TODO: disable the specific record's interaction
+    DeleteGameRecord(recordId)
   }
 
   useEffect(() => {
@@ -25,6 +29,7 @@ const GameRecords = () => {
       <ul>
         {gameRecords.map(record => {
           return (
+            // TODO: make a single component for each record
             <li key={record.id}>
               <Button
                 varient="contained"
