@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react'
+
+import Chip from '@mui/material/Chip'
+
 import { GetGames } from '../api/GameAPI'
 
 import GameRecord from './GameRecord'
@@ -17,16 +20,19 @@ const GameRecords = () => {
   }, [])
 
   return (
-    <ul>
-      {gameRecords.map(record => {
-        return (
-          <li key={record.id}>
-            {/* TODO: handle record being deleted from the list */}
-            <GameRecord record={record} />
-          </li>
-        )
-      })}
-    </ul>
+    <div>
+      {gameRecords.length && <Chip label={gameRecords.length + ' Records'} />}
+      <ul>
+        {gameRecords.map(record => {
+          return (
+            <li key={record.id}>
+              {/* TODO: handle record being deleted from the list */}
+              <GameRecord record={record} />
+            </li>
+          )
+        })}
+      </ul>
+    </div>
   )
 }
 
