@@ -24,7 +24,6 @@ const GameRecords = () => {
     <div>
       <ul>
         {gameRecords.map(record => {
-          console.log(record)
           return (
             <li key={record.id}>
               <Button

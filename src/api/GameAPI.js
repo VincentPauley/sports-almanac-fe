@@ -2,10 +2,8 @@ import API from './index'
 
 export const GetGames = async () => {
   try {
-    const results = await API.get('/games')
-    const { data } = results
-
-    return data
+    const games = await API.get('/games')
+    return games
   } catch (e) {
     console.error(e)
   }
