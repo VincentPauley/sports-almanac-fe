@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
 import { DeleteGameRecord } from '../api/calls'
+import ObjectReadout from './ObjectReadout'
 
 const GameRecord = props => {
   const [deleteInProgress, setDeleteInProgress] = useState(false)
@@ -22,12 +23,15 @@ const GameRecord = props => {
     }, 3000)
   }
 
+  console.log(Object.keys(record))
+
   return (
     <Card>
       <CardContent>
         <Typography variant="h5">
           <p>ID: {record.id}</p>
         </Typography>
+        <ObjectReadout obj={record} />
 
         <Button
           varient="contained"
@@ -36,8 +40,6 @@ const GameRecord = props => {
         >
           Delete
         </Button>
-
-        <p>All details of a particular record.</p>
       </CardContent>
     </Card>
   )
