@@ -4,12 +4,16 @@ import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Box from '@mui/material/Box'
 
 import { DeleteGameRecord } from '../api/calls'
 import ObjectReadout from './ObjectReadout'
 
 const GameRecord = props => {
   const [deleteInProgress, setDeleteInProgress] = useState(false)
+  const [value, setValue] = useState(0)
 
   const { record } = props
 
@@ -23,15 +27,43 @@ const GameRecord = props => {
     }, 3000)
   }
 
-  console.log(Object.keys(record))
+  const TabPanel = props => {
+    const { children, value, index, ...other } = props
+
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    )
+  }
+
+  const handleTabChange = (e, newValue) => {
+    setValue(newValue)
+  }
 
   return (
     <Card>
       <CardContent>
-        <Typography variant="h5">
-          <p>ID: {record.id}</p>
-        </Typography>
-        <ObjectReadout obj={record} />
+        <Tabs value={value} onChange={handleTabChange}>
+          <Tab label="Pretty" />
+          <Tab label="Raw" />
+        </Tabs>
+        <TabPanel value={value} index={0}>
+          Game {record.game}: {record.awayTeam} @ {record.homeTeam}
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <ObjectReadout obj={record} />
+        </TabPanel>
 
         <Button
           varient="contained"
