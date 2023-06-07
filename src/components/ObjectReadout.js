@@ -18,7 +18,7 @@ const ObjectReadout = props => {
         </TableHead>
         <TableBody>
           {Object.keys(props.obj).map(key => (
-            <TableRow>
+            <TableRow key={props.obj.id + Math.random()}>
               <TableCell>{key}</TableCell>
               <TableCell>{props.obj[key]}</TableCell>
             </TableRow>
