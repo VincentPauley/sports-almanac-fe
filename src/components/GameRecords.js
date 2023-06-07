@@ -26,10 +26,10 @@ const GameRecords = () => {
   return (
     <div>
       <GameRecordsHeader />
-      <ul>
+      <ul style={{ listStyleType: 'none', margin: 0, padding: 0 }}>
         {gameRecords.map(record => {
           return (
-            <li key={record.id}>
+            <li key={record.id} style={{ marginTop: '3px' }}>
               {/* TODO: handle record being deleted from the list */}
               <GameRecord record={record} />
             </li>
