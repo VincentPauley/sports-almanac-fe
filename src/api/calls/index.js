@@ -1,3 +1,4 @@
 import DeleteGameRecord from './DeleteGameRecord'
+import GetGameRecords from './GetGameRecords'
 
-export { DeleteGameRecord }
+export { GetGameRecords, DeleteGameRecord }

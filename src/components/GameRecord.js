@@ -59,7 +59,9 @@ const GameRecord = props => {
           <Tab label="Raw" />
         </Tabs>
         <TabPanel value={value} index={0}>
-          Game {record.game}: {record.awayTeam} @ {record.homeTeam}
+          <Typography component="span" varient="h6">
+            Game {record.game}: {record.awayTeam} @ {record.homeTeam}
+          </Typography>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <ObjectReadout obj={record} />

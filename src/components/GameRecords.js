@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react'
 
 import Chip from '@mui/material/Chip'
 
-import { GetGames } from '../api/GameAPI'
+import { GetGameRecords } from '../api/calls'
 
+// components
 import GameRecord from './GameRecord'
 
 const GameRecords = () => {
   const [gameRecords, setGameRecords] = useState([])
 
   const getGameRecords = async () => {
-    const gameRecords = await GetGames()
-
+    const gameRecords = await GetGameRecords()
     setGameRecords(gameRecords)
   }
 
