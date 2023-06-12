@@ -1,14 +1,9 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link as RouterLink
-} from 'react-router-dom'
-import Button from '@mui/material/Button'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import './App.css'
 
 import GameRecords from './components/GameRecords'
+import UpperNavigation from './components/UpperNavigation'
 
 function Records() {
   return <GameRecords />
@@ -21,13 +16,7 @@ function Home() {
 function App() {
   return (
     <Router>
-      <Button component={RouterLink} to="/">
-        Home
-      </Button>
-      <Button component={RouterLink} to="/records">
-        Records
-      </Button>
-
+      <UpperNavigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/records" element={<Records />} />
