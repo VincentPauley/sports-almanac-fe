@@ -24,6 +24,12 @@ const ColoredRouteButton = props => {
   )
 }
 
+const RouteList = [
+  { path: '/', title: 'Home' },
+  { path: '/records', title: 'Records' },
+  { path: '/create-records', title: 'Create Records' }
+]
+
 const UpperNavigation = () => {
   const location = useLocation()
 
@@ -34,20 +40,19 @@ const UpperNavigation = () => {
         padding: '1rem 0'
       }}
     >
-      {pathname === '/' ? (
-        <ColoredRouteButton title="Home" route="/" />
-      ) : (
-        <Button component={RouterLink} to="/">
-          Home
-        </Button>
-      )}
-      {pathname === '/records' ? (
-        <ColoredRouteButton title="Records" route="/records" />
-      ) : (
-        <Button component={RouterLink} to="/records">
-          Records
-        </Button>
-      )}
+      {RouteList.map(route => {
+        return pathname === route.path ? (
+          <ColoredRouteButton
+            key={route.path}
+            title={route.title}
+            route={route.path}
+          />
+        ) : (
+          <Button key={route.path} component={RouterLink} to={route.path}>
+            {route.title}
+          </Button>
+        )
+      })}
     </Box>
   )
 }
