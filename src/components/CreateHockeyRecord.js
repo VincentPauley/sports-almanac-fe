@@ -5,9 +5,11 @@ import CheckSharp from '@mui/icons-material/CheckSharp'
 import Error from '@mui/icons-material/Error'
 
 import TextInput from './shared/TextInput'
+import ValidityIndicator from './shared/ValidityIndicator'
 
 const CreateHockeyRecord = () => {
   const [homeTeam, setHomeTeam] = useState('')
+  const [awayTeamValid, setAwayTeamValid] = useState(false)
 
   const handleChange = e => {
     setHomeTeam(e.target.value)
@@ -20,6 +22,10 @@ const CreateHockeyRecord = () => {
   const awayTeamHandler = result => {
     console.log('-away team handler-')
     console.log(result)
+
+    const { valid } = result
+
+    setAwayTeamValid(valid)
   }
 
   return (
@@ -41,8 +47,8 @@ const CreateHockeyRecord = () => {
             justifyContent: 'space-around'
           }}
         >
-          {/* <CheckSharp /> */}
-          <Error />
+          {/* {awayTeamValid ? <CheckSharp /> : <Error />} */}
+          <ValidityIndicator valid={awayTeamValid} />
         </Grid>
       </Grid>
       <p>{homeTeam}</p>
